@@ -383,11 +383,12 @@ h3 {
 
 .hero-copy h1 {
   margin: 22px 0 0;
-  max-width: 14ch;
-  font-size: clamp(2.8rem, 5.6vw, 5rem);
-  line-height: 1;
-  padding-inline-start: 0.04em;
-  overflow-wrap: anywhere;
+  max-width: none;
+  font-size: clamp(2.4rem, 4.8vw, 4.4rem);
+  line-height: 1.02;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  text-wrap: balance;
 }
 
 .hero-text,
@@ -1099,8 +1100,17 @@ h3 {
   }
 }
 
+@media (max-width: 1220px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.1rem, 5vw, 3.3rem);
+  }
+}
+
 @media (max-width: 1080px) {
-  .hero-grid,
   .split-section,
   .project-grid,
   .skill-grid {
@@ -1109,6 +1119,10 @@ h3 {
 
   .skill-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2rem, 5.2vw, 3rem);
   }
 }
 
@@ -1140,8 +1154,7 @@ h3 {
   }
 
   .hero-copy h1 {
-    max-width: none;
-    font-size: 2.7rem;
+    font-size: 2.2rem;
   }
 
   .timeline::before {
@@ -1169,7 +1182,7 @@ h3 {
   }
 
   .hero-copy h1 {
-    font-size: 2.2rem;
+    font-size: 1.9rem;
   }
 
   .button,
