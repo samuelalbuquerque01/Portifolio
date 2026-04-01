@@ -82,3 +82,47 @@ if (supportsMouseGlow) {
     queueGlowUpdate();
   });
 }
+
+const visitCounter = document.querySelector("[data-visit-count]");
+
+const createCounterKey = () => {
+  const host = window.location.hostname || "local";
+  const path = window.location.pathname === "/" ? "home" : window.location.pathname;
+
+  return `${host}${path}`
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "");
+};
+
+const formatVisitCount = (value) => new Intl.NumberFormat("pt-BR").format(value);
+
+const updateVisitCounter = async () => {
+  if (!visitCounter) {
+    return;
+  }
+
+  const namespace = "samuelalbuquerque-portfolio";
+  const key = createCounterKey();
+
+  try {
+    const response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
+
+    if (!response.ok) {
+      throw new Error("Contador indisponivel");
+    }
+
+    const data = await response.json();
+
+    if (typeof data.count !== "number") {
+      throw new Error("Resposta invalida");
+    }
+
+    visitCounter.textContent = formatVisitCount(data.count);
+  } catch {
+    visitCounter.textContent = "indisponivel";
+  }
+};
+
+updateVisitCounter();

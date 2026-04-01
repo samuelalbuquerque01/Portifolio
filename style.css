@@ -914,6 +914,28 @@ h3 {
   transform: translateY(0);
 }
 
+.visit-footer {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 6px 24px 40px;
+}
+
+.visit-counter {
+  margin: 0;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.02);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.visit-counter strong {
+  color: #eef3fb;
+}
+
 @keyframes background-shift {
   0% {
     background-position: 0% 0%, 100% 0%, 50% 100%, 0 0;
@@ -1133,6 +1155,11 @@ h3 {
     padding-right: 18px;
   }
 
+  .visit-footer {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
   .bubble-c,
   .bubble-e,
   .orb-b {
@@ -1188,5 +1215,9 @@ h3 {
   .button,
   .contact-card {
     width: 100%;
+  }
+
+  .visit-counter {
+    font-size: 0.9rem;
   }
 }
